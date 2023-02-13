@@ -17,9 +17,10 @@ public class ProductManager {
     public void add(Product product) {            // Добавление продукта
         cellRepo.save(product);
     }
-    private Product[] result = new Product[0];
 
-    public Product[] searchBy(String text) {       // Поиск по
+
+    public Product[] searchBy(String text) {     // Поиск по
+        Product[] result = new Product[0];
         for (Product product : cellRepo.findAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];

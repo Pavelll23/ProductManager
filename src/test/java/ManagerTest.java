@@ -10,7 +10,7 @@ public class ManagerTest {
     private ProductRepositiry repositiry = new ProductRepositiry();
     private ProductManager manager = new ProductManager(repositiry);
 
-    Product product = new Product(25, "Хлеб", 50);
+    Product product = new Product(25, "СмартТВ", 5000);
     Product book = new Book(11, "Моя весна", "Александр Шубкин", 300);
     Product smartphone = new Smartphone(33, "Смартфон", 15000, "Самсунг");
 
@@ -60,25 +60,13 @@ public class ManagerTest {
         manager.add(book);
         manager.add(smartphone);
         manager.add(product);
-        String text = "Смартфон";
+        String text = "Смарт";
 
-        Product[] expected = {smartphone};
+        Product[] expected = {smartphone, product};
         Product[] actual = manager.searchBy(text);
         Assertions.assertArrayEquals(expected, actual);
     }
-
-  //  @Test
-  //  public void shouldDoNotSuitableProduct() {
-  //      manager.add(book);
-  //      manager.add(smartphone);
-  //      manager.add(product);
-  //      String text =
-
- //       Product[] expected = {};
-  //      Product[] actual = manager.searchBy(text);
-  //      Assertions.assertArrayEquals(expected, actual);
-
-    }
+}
 
 
 
