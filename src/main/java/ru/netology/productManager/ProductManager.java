@@ -19,7 +19,7 @@ public class ProductManager {
     }
 
 
-    public Product[] searchBy(String text) {     // Поиск по
+    public Product[] searchBy(String text) {     // Поиск по тексту
         Product[] result = new Product[0];
         for (Product product : cellRepo.findAll()) {
             if (matches(product, text)) {

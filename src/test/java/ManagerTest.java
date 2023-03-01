@@ -1,10 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.product.Product;
-import ru.netology.productManager.Book;
-import ru.netology.productManager.ProductManager;
-import ru.netology.productManager.ProductRepositiry;
-import ru.netology.productManager.Smartphone;
+import ru.netology.productManager.*;
 
 public class ManagerTest {
     private ProductRepositiry repositiry = new ProductRepositiry();
@@ -65,6 +62,28 @@ public class ManagerTest {
         Product[] expected = {smartphone, product};
         Product[] actual = manager.searchBy(text);
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldDeleteByIdIfHiIs() {
+        repositiry.save(book);
+        repositiry.save(smartphone);
+        repositiry.save(product);
+        repositiry.deleteById(25);
+
+        Product[] expected = {book,smartphone};
+        Product[] actual = repositiry.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void shouldDeleteByIdIfNoId(){
+        repositiry.save(book);
+        repositiry.save(smartphone);
+        repositiry.save(product);
+
+        Assertions.assertThrows(NotFoundExeption.class,() -> {
+            repositiry.deleteById(2);
+        });
     }
 }
 
